@@ -38,64 +38,7 @@ La arquitectura del repositorio sigue las convenciones estándar de proyectos Ja
 
 ### Diagrama de Clases (UML)
 
-A continuación, se presenta un diagrama simplificado mostrando las relaciones más críticas del proyecto, modelado de forma dinámica:
-
-```mermaid
-classDiagram
-    class Player {
-        <<abstract>>
-        -String name
-        -Hand hand
-        -int score
-        +chooseDrawSource(topDiscard) DrawSource*
-        +chooseDiscard() int*
-        +wantsToClose() boolean*
-    }
-    class HumanPlayer {
-        +chooseDrawSource(topDiscard) DrawSource
-        +chooseDiscard() int
-        +wantsToClose() boolean
-    }
-    class AIPlayer {
-        -AIStrategy strategy
-        +chooseDrawSource(topDiscard) DrawSource
-        +chooseDiscard() int
-        +wantsToClose() boolean
-    }
-    
-    Player <|-- HumanPlayer
-    Player <|-- AIPlayer
-    AIPlayer --> AIStrategy
-
-    class AIStrategy {
-        +shouldDrawFromDiscard(Hand, Card) boolean
-        +chooseCardToDiscard(Hand) int
-        +shouldClose(Hand) boolean
-    }
-    
-    class Game {
-        -List~Player~ players
-        -Deck deck
-        -DiscardPile discardPile
-        +start()
-    }
-    
-    class Hand {
-        -List~Card~ cards
-    }
-    class Card {
-        -Suit suit
-        -int value
-    }
-    class CombinationFinder {
-        <<utility>>
-        +findBestCombinations(List~Card~) List~Combination~
-    }
-    
-    Player o-- Hand
-    Hand o-- Card
-    Game --> Player
-```
+![DIAGRAMA DE CLASES](assets/UML.png)
 
 
 ### Descripción Breve de Clases Principales
