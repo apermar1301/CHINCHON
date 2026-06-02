@@ -31,6 +31,8 @@ class CombinationFinderTest {
     // --- findAllGroups ---
 
     /**
+     * Enfoque de Caja Negra: Verifica el comportamiento esperado (salida) 
+     * proporcionando una entrada de datos válidos comunes.
      * Verifica que se detecta un grupo de 3 cartas del mismo valor.
      */
     @Test
@@ -47,6 +49,8 @@ class CombinationFinderTest {
     }
 
     /**
+     * Enfoque de Caja Blanca: Fuerza el recorrido por la rama condicional 
+     * interna `if (indices.size() < MIN_COMBINATION_SIZE)` para comprobar el rechazo.
      * Verifica que no se detecta grupo con solo 2 cartas del mismo valor.
      */
     @Test
@@ -78,6 +82,7 @@ class CombinationFinderTest {
     // --- findAllRuns ---
 
     /**
+     * Enfoque de Caja Negra: Prueba funcional básica con datos válidos.
      * Verifica que se detecta una escalera de 3 cartas consecutivas del mismo palo.
      */
     @Test
@@ -94,6 +99,8 @@ class CombinationFinderTest {
     }
 
     /**
+     * Enfoque de Caja Blanca: Prueba el bloque `else` interno de la función 
+     * `findConsecutiveSequences` donde las cartas no cumplen `currOrder - prevOrder == 1`.
      * Verifica que no se detecta escalera si las cartas no son consecutivas.
      */
     @Test
@@ -138,6 +145,7 @@ class CombinationFinderTest {
     // --- findBestCombinations ---
 
     /**
+     * Enfoque de Caja Negra: Prueba de integración de la función principal.
      * Verifica que se encuentra la mejor combinacion en una mano mixta.
      */
     @Test
@@ -158,6 +166,8 @@ class CombinationFinderTest {
     }
 
     /**
+     * Enfoque de Caja Blanca: Verifica el caso base de la recursividad en 
+     * `findOptimalSubset` donde el tamaño de combinaciones es 0.
      * Verifica que con cartas sin combinaciones no se forman combinaciones.
      */
     @Test
@@ -179,6 +189,7 @@ class CombinationFinderTest {
     // --- getUncombinedCards ---
 
     /**
+     * Enfoque de Caja Negra: Prueba de la salida esperada ante datos combinados mixtos.
      * Verifica que se identifican correctamente las cartas sueltas.
      */
     @Test
@@ -198,6 +209,8 @@ class CombinationFinderTest {
     }
 
     /**
+     * Enfoque de Caja Blanca: Verifica la condición del Stream `filter` interno
+     * donde ninguna carta está en `usedIndices`.
      * Verifica que todas las cartas son sueltas cuando no hay combinaciones.
      */
     @Test
@@ -214,6 +227,7 @@ class CombinationFinderTest {
     // --- calculateUncombinedPoints ---
 
     /**
+     * Enfoque de Caja Negra: Prueba funcional de la suma de puntos.
      * Verifica el calculo de puntos de cartas no combinadas.
      */
     @Test
@@ -229,6 +243,8 @@ class CombinationFinderTest {
     }
 
     /**
+     * Enfoque de Caja Blanca: Prueba que el mapeo interno retorne un valor
+     * numérico total de 0 al procesar una lista sin sobrantes.
      * Verifica que los puntos son 0 cuando todas las cartas estan combinadas.
      */
     @Test
@@ -245,6 +261,7 @@ class CombinationFinderTest {
     // --- canClose ---
 
     /**
+     * Enfoque de Caja Blanca: Fuerza la evaluación de la primera condición `if (combinedCount == GameConstants.HAND_SIZE)`.
      * Verifica que se puede cerrar con 7 cartas combinadas.
      */
     @Test
@@ -261,6 +278,8 @@ class CombinationFinderTest {
     }
 
     /**
+     * Enfoque de Caja Blanca: Fuerza la segunda condición de cierre donde 
+     * `uncombined.size() == 1` y los puntos <= 5.
      * Verifica que se puede cerrar con 6 combinadas y 1 suelta de valor 1-5.
      */
     @Test
@@ -277,6 +296,7 @@ class CombinationFinderTest {
     }
 
     /**
+     * Enfoque de Caja Negra: Prueba de valores límite o condiciones no válidas de cierre.
      * Verifica que no se puede cerrar con 6 combinadas y carta suelta mayor a 5.
      */
     @Test
@@ -293,6 +313,7 @@ class CombinationFinderTest {
     }
 
     /**
+     * Enfoque de Caja Blanca: Fuerza el `return false` final de `canClose`.
      * Verifica que no se puede cerrar con menos de 6 cartas combinadas.
      */
     @Test
@@ -311,6 +332,7 @@ class CombinationFinderTest {
     // --- hasChinchon ---
 
     /**
+     * Enfoque de Caja Negra: Prueba el escenario de éxito para Chinchón.
      * Verifica que se detecta un chinchon valido (7 consecutivas mismo palo).
      */
     @Test
@@ -327,6 +349,7 @@ class CombinationFinderTest {
     }
 
     /**
+     * Enfoque de Caja Blanca: Cubre la rama inicial rápida `if (cards.size() != GameConstants.HAND_SIZE)` que retorna falso.
      * Verifica que no es chinchon si no son 7 cartas.
      */
     @Test
@@ -428,6 +451,7 @@ class CombinationFinderTest {
     // --- Caso borde: mano vacia ---
 
     /**
+     * Enfoque de Caja Blanca: Caso límite para evitar NullPointerExceptions y fallos de aserción.
      * Verifica que una mano vacia no puede cerrar.
      */
     @Test

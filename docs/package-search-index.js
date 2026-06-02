@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"app.chinchon"},{"l":"app.chinchon.ai"},{"l":"app.chinchon.game"},{"l":"app.chinchon.model"},{"l":"app.chinchon.player"},{"l":"app.chinchon.util"},{"l":"app.util"}];updateSearchResults();
